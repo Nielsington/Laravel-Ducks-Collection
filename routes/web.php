@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ContactController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +18,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Adds a get route to root which calls a callback function.
+// The callback is the show() method from the controller
+// <a href="{{route('contact)}}"
+
+Route::get('/', [HomepageController::class, 'show'])->name("home");
+Route::get('/about', [AboutController::class, 'show'])->name("about");
+Route::get('/product', [ProductController::class, 'show'])->name("product");
+Route::get('/contact', [ContactController::class, 'show'])->name("contact");
