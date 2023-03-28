@@ -26,3 +26,4 @@ Route::get('/', [HomepageController::class, 'show'])->name("home");
 Route::get('/about', [AboutController::class, 'show'])->name("about");
 Route::get('/product', [ProductController::class, 'show'])->name("product");
 Route::get('/contact', [ContactController::class, 'show'])->name("contact");
+Route::post('/contact/handleForm', [ContactController::class, 'show'])->name("handleForm");
