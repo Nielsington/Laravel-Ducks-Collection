@@ -12,7 +12,7 @@ class ContactController extends Controller
         if ($request->isMethod('post')) {
             $formData = $this->formToDB();
             $name = $formData['name'];
-            return view('contact',['name' => $name]);
+            return redirect('/');
         }
         
         return view('contact');
