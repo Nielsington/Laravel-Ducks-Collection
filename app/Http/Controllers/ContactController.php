@@ -9,12 +9,12 @@ class ContactController extends Controller
 {
     public function show(Request $request)
     {
+        clock()->event('Time to submit form: ',)->begin();
         if ($request->isMethod('post')) {
-            $formData = $this->formToDB();
-            $name = $formData['name'];
+            $this->formToDB();
             return redirect('/');
         }
-        
+        clock()->event('Time to submit form: ')->end();
         return view('contact');
     }
 
@@ -38,7 +38,7 @@ class ContactController extends Controller
             return $formData;
     }
 
-    private function formToDB()
+    private function formToDB():void
     {
         $formData = $this->getForm();
         $ticket = new Ticket();
@@ -49,7 +49,6 @@ class ContactController extends Controller
         $ticket->subject = $formData['subject'];
         $ticket->description = $formData['description'];
         $ticket->save();
-
-        return $formData;
+        clock()->info("Inserted into database!");
     }
 }
