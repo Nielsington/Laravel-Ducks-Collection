@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Ticket;
 
 class ContactController extends Controller
 {
     public function show(Request $request)
     {
         if ($request->isMethod('post')) {
-            $name = $this->getForm($request);
+            $formData = $this->formToDB();
+            $name = $formData['name'];
             return view('contact',['name' => $name]);
         }
         
@@ -33,6 +35,21 @@ class ContactController extends Controller
                                 'email.max' => 'Your email should not be more than 255 characters',    
                                 'description.min' => 'Your description should not be less than 10 characters'
                             ]);
-            return $formData['name'];
-}
+            return $formData;
+    }
+
+    private function formToDB()
+    {
+        $formData = $this->getForm();
+        $ticket = new Ticket();
+
+        $ticket->first_name = $formData['firstName'];
+        $ticket->last_name = $formData['name'];
+        $ticket->email = $formData['email'];
+        $ticket->subject = $formData['subject'];
+        $ticket->description = $formData['description'];
+        $ticket->save();
+
+        return $formData;
+    }
 }
