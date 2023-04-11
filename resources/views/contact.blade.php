@@ -1,10 +1,8 @@
 @extends('layout')
 
-<header>
-    <h4 class="text-center text-[3rem]">CONTACT PAGE</h4>
-</header>
-
 @section('form')
+    <h4 class="text-center text-[3rem]">CONTACT PAGE</h4>
+    <x-navigation />
     <form action="{{route('submit-contact')}}" method="POST" class="flex flex-col w-[20%] m-auto">
     @csrf
     @if ($errors->any())
