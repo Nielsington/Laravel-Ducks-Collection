@@ -9,17 +9,12 @@ class ContactController extends Controller
 {
     public function show(Request $request)
     {
-        clock()->event('Time to submit form: ',)->begin();
-        if ($request->isMethod('post')) {
-            $this->formToDB();
-            return redirect('/');
-        }
-        clock()->event('Time to submit form: ')->end();
         return view('contact');
     }
 
-    private function getForm()
+    public function getForm()
     {
+        clock()->event('Time to submit form: ',)->begin();
         $formData = request()->validate([
                             'name' => ['required', 'max:255'],
                             'firstName' => ['required', 'max:255'],
@@ -35,12 +30,14 @@ class ContactController extends Controller
                                 'email.max' => 'Your email should not be more than 255 characters',    
                                 'description.min' => 'Your description should not be less than 10 characters'
                             ]);
-            return $formData;
+
+            $this->formToDB($formData);
+            clock()->event('Time to submit form: ')->end();
+            return view('homepage');
     }
 
-    private function formToDB():void
+    private function formToDB($formData):void
     {
-        $formData = $this->getForm();
         $ticket = new Ticket();
 
         $ticket->first_name = $formData['firstName'];
