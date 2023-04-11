@@ -9,7 +9,7 @@
 </head>
 
 <body class="bg-cyan-900 flex flex-col min-h-screen"> 
-    <main class="flex-grow">
+    <main>
         @yield('form')
         @yield('content')
     </main>
