@@ -17,3 +17,23 @@
 h4 {
     color:white;
 }
+
+.products-wrapper{
+    display: flex;
+    max-width: 70%;
+    flex-wrap: wrap;
+    margin: auto;
+    outline: 2px solid black,
+}
+
+.product-container {
+    margin: 1.5rem;
+    display:inline-block;
+    color:white;
+    
+    a {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color:rgb(207, 224, 49);
+    }
+}
