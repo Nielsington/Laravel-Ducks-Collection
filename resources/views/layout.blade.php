@@ -9,8 +9,6 @@
 </head>
 
 <body class="bg-cyan-900 flex flex-col min-h-screen"> 
-    
-    <x-navigation />
     <main class="flex-grow">
         @yield('form')
         @yield('content')
