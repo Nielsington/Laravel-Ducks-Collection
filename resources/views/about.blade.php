@@ -1,11 +1,10 @@
 @extends('layout')
-@section('header')
+
 <header>
     <h4 class="text-center text-[3rem]">ABOUT US</h4>
 </header>
-@endsection
 
-@section('about')
+@section('content')
     <div class="w-[50%] m-auto text-zinc-50 ">
         <div>
             <p class="text-[1.2rem]">
