@@ -10,11 +10,10 @@
 
 <body class="bg-cyan-900 flex flex-col min-h-screen"> 
     
-    @yield('header')
     <x-navigation />
     <main class="flex-grow">
         @yield('form')
-        @yield('about')
+        @yield('content')
     </main>
     
     <footer class="bg-slate-500	mt-auto text-center">
