@@ -23,14 +23,17 @@ h4 {
     max-width: 70%;
     flex-wrap: wrap;
     margin: auto;
-    outline: 2px solid black,
+    justify-content: space-evenly;
 }
 
 .product-container {
     margin: 1.5rem;
     display:inline-block;
     color:white;
-    
+    min-width: 25%;
+    max-width: 25%;
+    text-align: center;
+
     a {
         font-size: 1.3rem;
         font-weight: bold;
