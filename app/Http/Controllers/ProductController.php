@@ -20,17 +20,8 @@ class ProductController extends Controller
         return $all_ducks;
     }
 
-    public function showProduct(int $id)
+    public function showProduct(Duck $duck)
     {
-        $product = $this->getProduct($id);
-        clock()->info($product);
-        //TODO: use $product data
-        return view('product', ['product' => $product]);
-    }
-
-    private function getProduct(int $id): Duck
-    {
-        $product = Duck::find($id);
-        return $product;
+        return view('product', ['product' => $duck]);
     }
 }
